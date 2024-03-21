@@ -358,6 +358,7 @@ void vTimerCallback(TimerHandle_t xTimer)
         state = !state;
         gpio_set_level(GPIO_NUM_4, state);
         ESP_LOGI(TAG, "-----------------trang thai led %d------------------", state);
+        printf("hello github");
     }
 }
 
