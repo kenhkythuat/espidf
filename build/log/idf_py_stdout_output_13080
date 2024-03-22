@@ -1,104 +1,55 @@
-ESP-ROM:esp32s3-20210327
-Build:Mar 27 2021
-rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
-SPIWP:0xee
-mode:DIO, clock div:1
-load:0x3fce3810,len:0x178c
-load:0x403c9700,len:0x4
-load:0x403c9704,len:0xcbc
-load:0x403cc700,len:0x2da0
-entry 0x403c9914
-[0;32mI (27) boot: ESP-IDF HEAD-HASH-NOTFOUND 2nd stage bootloader[0m
-[0;32mI (27) boot: compile time Mar 21 2024 10:54:25[0m
-[0;32mI (27) boot: Multicore bootloader[0m
-[0;32mI (31) boot: chip revision: v0.2[0m
-[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
-[0;32mI (40) boot.esp32s3: SPI Mode       : DIO[0m
-[0;32mI (44) boot.esp32s3: SPI Flash Size : 8MB[0m
-[0;32mI (49) boot: Enabling RNG early entropy source...[0m
-[0;32mI (54) boot: Partition Table:[0m
-[0;32mI (58) boot: ## Label            Usage          Type ST Offset   Length[0m
-[0;32mI (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
-[0;32mI (73) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
-[0;32mI (80) boot:  2 factory          factory app      00 00 00010000 00100000[0m
-[0;32mI (88) boot: End of partition table[0m
-[0;32mI (92) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0d3b4h ( 54196) map[0m
-[0;32mI (110) esp_image: segment 1: paddr=0001d3dc vaddr=3fc92000 size=02c38h ( 11320) load[0m
-[0;32mI (113) esp_image: segment 2: paddr=0002001c vaddr=40374000 size=0df00h ( 57088) load[0m
-[0;32mI (130) esp_image: segment 3: paddr=0002df24 vaddr=00000000 size=020f4h (  8436) [0m
-[0;32mI (132) esp_image: segment 4: paddr=00030020 vaddr=42000020 size=19aa4h (105124) map[0m
-[0;32mI (160) boot: Loaded app from partition at offset 0x10000[0m
-[0;32mI (160) boot: Disabling RNG early entropy source...[0m
-[0;32mI (171) cpu_start: Multicore app[0m
-[0;32mI (181) cpu_start: Pro cpu start user code[0m
-[0;32mI (181) cpu_start: cpu freq: 160000000 Hz[0m
-[0;32mI (181) cpu_start: Application information:[0m
-[0;32mI (184) cpu_start: Project name:     mantis_solenoid_esim[0m
-[0;32mI (190) cpu_start: App version:      1[0m
-[0;32mI (194) cpu_start: Compile time:     Mar 21 2024 10:54:18[0m
-[0;32mI (200) cpu_start: ELF file SHA256:  b71a1639a...[0m
-[0;32mI (206) cpu_start: ESP-IDF:          HEAD-HASH-NOTFOUND[0m
-[0;32mI (212) cpu_start: Min chip rev:     v0.0[0m
-[0;32mI (216) cpu_start: Max chip rev:     v0.99 [0m
-[0;32mI (221) cpu_start: Chip rev:         v0.2[0m
-[0;32mI (226) heap_init: Initializing. RAM available for dynamic allocation:[0m
-[0;32mI (233) heap_init: At 3FC95540 len 000541D0 (336 KiB): RAM[0m
-[0;32mI (239) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
-[0;32mI (245) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
-[0;32mI (252) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
-[0;32mI (259) spi_flash: detected chip: gd[0m
-[0;32mI (262) spi_flash: flash io: dio[0m
-[0;32mI (266) sleep: Configure to isolate all GPIO pins in sleep state[0m
-[0;32mI (273) sleep: Enable automatic switching of GPIO sleep configuration[0m
-[0;32mI (280) main_task: Started on CPU0[0m
-[0;32mI (290) main_task: Calling app_main()[0m
-[0;31mE (5290) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
-[0;31mE (5290) task_wdt:  - IDLE0 (CPU 0)[0m
-[0;31mE (5290) task_wdt: Tasks currently running:[0m
-[0;31mE (5290) task_wdt: CPU 0: main[0m
-[0;31mE (5290) task_wdt: CPU 1: IDLE1[0m
-[0;31mE (5290) task_wdt: Print CPU 0 (current core) backtrace[0m
+[1/10] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D C:\Espressif\frameworks\mantis_solenoid_esim\build\bootloader\esp-idf\esptool_py && C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.2.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/Espressif/frameworks/mantis_solenoid_esim/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5250 bytes. 0x2db0 bytes (36%) free.
+[2/8] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/esim.c.obj
+[3/8] Linking C static library esp-idf\main\libmain.a
+[4/8] Generating ld/sections.ld
+[5/8] Linking CXX executable mantis_solenoid_esim.elf
+[6/8] Generating binary image from built executable
+esptool.py v4.7.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated C:/Espressif/frameworks/mantis_solenoid_esim/build/mantis_solenoid_esim.bin
+[7/8] cmd.exe /C "cd /D C:\Espressif\frameworks\mantis_solenoid_esim\build\esp-idf\esptool_py && C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.2.1/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Espressif/frameworks/mantis_solenoid_esim/build/partition_table/partition-table.bin C:/Espressif/frameworks/mantis_solenoid_esim/build/mantis_solenoid_esim.bin"
+mantis_solenoid_esim.bin binary size 0x3a3c0 bytes. Smallest app partition is 0x100000 bytes. 0xc5c40 bytes (77%) free.
+[7/8] cmd.exe /C "cd /D C:\Espressif\frameworks\esp-idf-v5.2.1\components\esptool_py && C:\Espressif\tools\cmake\3.24.0\bin\cmake.exe -D IDF_PATH=C:/Espressif/frameworks/esp-idf-v5.2.1 -D SERIAL_TOOL=C:/Espressif/python_env/idf5.2_py3.11_env/Scripts/python.exe;;C:/Espressif/frameworks/esp-idf-v5.2.1/components/esptool_py/esptool/esptool.py;--chip;esp32s3 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Espressif/frameworks/mantis_solenoid_esim/build -P C:/Espressif/frameworks/esp-idf-v5.2.1/coesptool.py --chip esp32s3 -p COM11 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 8MB 0x0 bootloader/bootloader.bin 0x10000 mantis_solenoid_esim.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.7.0
+Serial port COM11
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE
+Crystal is 40MHz
+MAC: 84:fc:e6:7d:69:34
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x0004afff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 21072 bytes to 13087...
+Writing at 0x00000000... (100 %)
+Wrote 21072 bytes (13087 compressed) at 0x00000000 in 0.6 seconds (effective 291.9 kbit/s)...
+Hash of data verified.
+Compressed 238528 bytes to 121569...
+Writing at 0x00010000... (12 %)
+Writing at 0x0001db7c... (25 %)
+Writing at 0x0002557e... (37 %)
+Writing at 0x0002be30... (50 %)
+Writing at 0x000326b6... (62 %)
+Writing at 0x0003aee9... (75 %)
+Writing at 0x0004107b... (87 %)
+Writing at 0x000476ad... (100 %)
+Wrote 238528 bytes (121569 compressed) at 0x00010000 in 3.0 seconds (effective 645.7 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 520.9 kbit/s)...
+Hash of data verified.
 
-
-Backtrace: 0x4200B6F7:0x3FC93210 0x4200BB14:0x3FC93230 0x40377165:0x3FC93260 0x4200A0BD:0x3FC99160 0x420081F7:0x3FC99180 0x4201929F:0x3FC99210 0x4037A401:0x3FC99240
-
-[0;31mE (10290) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
-[0;31mE (10290) task_wdt:  - IDLE0 (CPU 0)[0m
-[0;31mE (10290) task_wdt: Tasks currently running:[0m
-[0;31mE (10290) task_wdt: CPU 0: main[0m
-[0;31mE (10290) task_wdt: CPU 1: IDLE1[0m
-[0;31mE (10290) task_wdt: Print CPU 0 (current core) backtrace[0m
-
-
-Backtrace: 0x4200B6F7:0x3FC93210 0x4200BB14:0x3FC93230 0x40377165:0x3FC93260 0x4037BFCA:0x3FC99160 0x42008212:0x3FC99180 0x4201929F:0x3FC99210 0x4037A401:0x3FC99240
-
-[0;31mE (15290) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
-[0;31mE (15290) task_wdt:  - IDLE0 (CPU 0)[0m
-[0;31mE (15290) task_wdt: Tasks currently running:[0m
-[0;31mE (15290) task_wdt: CPU 0: main[0m
-[0;31mE (15290) task_wdt: CPU 1: IDLE1[0m
-[0;31mE (15290) task_wdt: Print CPU 0 (current core) backtrace[0m
-
-
-Backtrace: 0x4200B6F7:0x3FC93210 0x4200BB14:0x3FC93230 0x40377165:0x3FC93260 0x4037BFCA:0x3FC99160 0x42008212:0x3FC99180 0x4201929F:0x3FC99210 0x4037A401:0x3FC99240
-
-[0;31mE (20290) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
-[0;31mE (20290) task_wdt:  - IDLE0 (CPU 0)[0m
-[0;31mE (20290) task_wdt: Tasks currently running:[0m
-[0;31mE (20290) task_wdt: CPU 0: main[0m
-[0;31mE (20290) task_wdt: CPU 1: IDLE1[0m
-[0;31mE (20290) task_wdt: Print CPU 0 (current core) backtrace[0m
-
-
-Backtrace: 0x4200B6F7:0x3FC93210 0x4200BB14:0x3FC93230 0x40377165:0x3FC93260 0x4037BFCA:0x3FC99160 0x42008212:0x3FC99180 0x4201929F:0x3FC99210 0x4037A401:0x3FC99240
-
-[0;31mE (25290) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
-[0;31mE (25290) task_wdt:  - IDLE0 (CPU 0)[0m
-[0;31mE (25290) task_wdt: Tasks currently running:[0m
-[0;31mE (25290) task_wdt: CPU 0: main[0m
-[0;31mE (25290) task_wdt: CPU 1: IDLE1[0m
-[0;31mE (25290) task_wdt: Print CPU 0 (current core) backtrace[0m
-
-
-Backtrace: 0x4200B6F7:0x3FC93210 0x4200BB14:0x3FC93230 0x40377165:0x3FC93260 0x4037BFCA:0x3FC99160 0x42008212:0x3FC99180 0x4201929F:0x3FC99210 0x4037A401:0x3FC99240
-
+Leaving...
+Hard resetting via RTS pin...
+mponents/esptool_py/run_serial_tool.cmake"

@@ -10,6 +10,7 @@
 #include "stdlib.h"
 #include <math.h>
 #include "esp_task_wdt.h"
+#include <common.h>
 #define TAG "----MIAN----"
 #define PWM_FREQ_HZ 5000
 #define PWM_RESOLUTION LEDC_TIMER_12_BIT
@@ -321,32 +322,32 @@ void pwm_sin_50hz(void)
 }
 
 // Task chạy sóng SPWM cho 2 kênh
-void spwm_task(void *pvParameter)
-{
-    while (1)
-    {
-        pwm_sin_50hz();
-        // vTaskDelay(pdMS_TO_TICKS(1));
-    }
-}
-static void configure_led(void)
-{
-    ESP_LOGI(TAG, "Example configured to blink GPIO LED!");
-    gpio_reset_pin(BLINK_GPIO);
-    /* Set the GPIO as a push/pull output */
-    gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
-}
-// static void status_led(void *arg)
+// void spwm_task(void *pvParameter)
 // {
 //     while (1)
 //     {
-//         static bool state = 1;
-//         state = !state;
-//         gpio_set_level(GPIO_NUM_4, state);
-//         ESP_LOGI(TAG, "-----------------trang thai led %d------------------", state);
-//         vTaskDelay(pdMS_TO_TICKS(1000));
+//         pwm_sin_50hz();
+//         // vTaskDelay(pdMS_TO_TICKS(1));
 //     }
 // }
+static void configure_led(int num_gpio)
+{
+    ESP_LOGI(TAG, "Example configured to blink GPIO LED!");
+    gpio_reset_pin(num_gpio);
+    /* Set the GPIO as a push/pull output */
+    gpio_set_direction(num_gpio, GPIO_MODE_OUTPUT);
+}
+static void status_led(void *arg)
+{
+    while (1)
+    {
+        static bool state = 1;
+        state = !state;
+        gpio_set_level(GPIO_NUM_4, state);
+        ESP_LOGI(TAG, "-----------------trang thai led %d------------------", state);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}
 // void vTimerCallback(TimerHandle_t xTimer)
 // {
 //     uint32_t ulCount;
@@ -365,11 +366,12 @@ static void configure_led(void)
 
 void app_main()
 {
-    configure_led();
+    configure_led(BLINK_GPIO);
+    esim_config();
     // TaskHandle_t xHandle = NULL;
     // xTimers[0] = xTimerCreate("bink led", pdMS_TO_TICKS(1000), pdTRUE, (void *)0, vTimerCallback);
     // xTimerStart(xTimers[0], 0);
-    xTaskCreate(spwm_task, "spwm_task", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
+    // xTaskCreate(spwm_task, "spwm_task", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
     // xTaskCreate(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
     // xTaskCreatePinnedToCore(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 2, &xHandle, TASK_PINNED_CORE_ID);
 }

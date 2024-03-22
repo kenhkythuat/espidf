@@ -1,0 +1,348 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0xb (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x178c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcbc
+load:0x403cc700,len:0x2da0
+entry 0x403c9914
+[0;32mI (27) boot: ESP-IDF HEAD-HASH-NOTFOUND 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Mar 21 2024 10:58:43[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v0.2[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (40) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (44) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (49) boot: Enabling RNG early entropy source...[0m
+[0;32mI (54) boot: Partition Table:[0m
+[0;32mI (58) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (73) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (80) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (88) boot: End of partition table[0m
+[0;32mI (92) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0d9b4h ( 55732) map[0m
+[0;32mI (110) esp_image: segment 1: paddr=0001d9dc vaddr=3fc92d00 size=0263ch (  9788) load[0m
+[0;32mI (113) esp_image: segment 2: paddr=00020020 vaddr=42000020 size=1b070h (110704) map[0m
+[0;32mI (137) esp_image: segment 3: paddr=0003b098 vaddr=3fc9533c size=00278h (   632) load[0m
+[0;32mI (138) esp_image: segment 4: paddr=0003b318 vaddr=40374000 size=0ec84h ( 60548) load[0m
+[0;32mI (162) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (162) boot: Disabling RNG early entropy source...[0m
+[0;32mI (173) cpu_start: Multicore app[0m
+[0;32mI (183) cpu_start: Pro cpu start user code[0m
+[0;32mI (183) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (183) cpu_start: Application information:[0m
+[0;32mI (186) cpu_start: Project name:     mantis_solenoid_esim[0m
+[0;32mI (192) cpu_start: App version:      1648bf2-dirty[0m
+[0;32mI (198) cpu_start: Compile time:     Mar 22 2024 09:32:28[0m
+[0;32mI (204) cpu_start: ELF file SHA256:  ca95f60d5...[0m
+[0;32mI (209) cpu_start: ESP-IDF:          HEAD-HASH-NOTFOUND[0m
+[0;32mI (215) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (220) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (225) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (229) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (237) heap_init: At 3FC95E80 len 00053890 (334 KiB): RAM[0m
+[0;32mI (243) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (249) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (255) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (262) spi_flash: detected chip: gd[0m
+[0;32mI (265) spi_flash: flash io: dio[0m
+[0;32mI (270) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (276) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (284) main_task: Started on CPU0[0m
+[0;32mI (294) main_task: Calling app_main()[0m
+[0;32mI (294) ----MIAN----: Example configured to blink GPIO LED![0m
+[0;32mI (294) gpio: GPIO[4]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (304) ----MQTT Esim----: ----------------------Create UART -------------------------------- 
+[0m
+[0;32mI (314) ----MQTT Esim----: Example configured to blink GPIO LED![0m
+[0;32mI (324) gpio: GPIO[42]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (334) ----MQTT Esim----: -----------------kich hoat module sim------------------[0m
+[0;32mI (844) main_task: Returned from app_main()[0m
+[0;32mI (944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (1944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (2944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (3944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (4944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (5944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (6944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (7944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (8944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (9944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (10944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (11944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (12944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (13944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (14944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (15944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (16944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (17944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (18944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (19944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (20944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (21944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (22944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (23944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (24944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (25944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (26944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (27944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28544) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28644) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28744) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28844) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (28944) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (29044) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (29144) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (29244) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (29344) RX_TASK_ESIM: -----------------ham nhan data------------------[0m
+[0;32mI (29444) RX_TASK_ESIM: -----------------ham nhan data------------------[0m

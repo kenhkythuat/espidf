@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "mantis_solenoid_esim",
-    "project_version":    "1",
+    "project_version":    "1648bf2-dirty",
     "project_path":       "C:/Espressif/frameworks/mantis_solenoid_esim",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.2.1",
     "build_dir":          "C:/Espressif/frameworks/mantis_solenoid_esim/build",
@@ -805,8 +805,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Espressif/frameworks/mantis_solenoid_esim/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Espressif/frameworks/mantis_solenoid_esim/main/hello_world_main.c" ],
-            "include_dirs": []
+            "sources": [ "C:/Espressif/frameworks/mantis_solenoid_esim/main/esim.c", "C:/Espressif/frameworks/mantis_solenoid_esim/main/main.c" ],
+            "include_dirs": [ "." ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -2131,7 +2131,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": []
+            "include_dirs": [ "." ]
         }
     },
     "debug_prefix_map_gdbinit": ""
