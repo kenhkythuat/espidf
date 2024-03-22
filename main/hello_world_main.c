@@ -326,7 +326,7 @@ void spwm_task(void *pvParameter)
     while (1)
     {
         pwm_sin_50hz();
-        vTaskDelay(pdMS_TO_TICKS(1));
+        // vTaskDelay(pdMS_TO_TICKS(1));
     }
 }
 static void configure_led(void)
@@ -347,27 +347,28 @@ static void configure_led(void)
 //         vTaskDelay(pdMS_TO_TICKS(1000));
 //     }
 // }
-void vTimerCallback(TimerHandle_t xTimer)
-{
-    uint32_t ulCount;
-    configASSERT(xTimer);
-    ulCount = (uint32_t)pvTimerGetTimerID(xTimer);
-    if (ulCount == 0)
-    {
-        static bool state = 0;
-        state = !state;
-        gpio_set_level(GPIO_NUM_4, state);
-        ESP_LOGI(TAG, "-----------------trang thai led %d------------------", state);
-        printf("hello github");
-    }
-}
+// void vTimerCallback(TimerHandle_t xTimer)
+// {
+//     uint32_t ulCount;
+
+//     configASSERT(xTimer);
+//     ulCount = (uint32_t)pvTimerGetTimerID(xTimer);
+//     if (ulCount == 0)
+//     {
+//         static bool state = 0;
+//         state = !state;
+//         gpio_set_level(GPIO_NUM_4, state);
+//         ESP_LOGI(TAG, "-----------------trang thai led %d------------------", state);
+//         printf("hello github");
+//     }
+// }
 
 void app_main()
 {
     configure_led();
-    TaskHandle_t xHandle = NULL;
-    xTimers[0] = xTimerCreate("bink led", pdMS_TO_TICKS(1000), pdTRUE, (void *)0, vTimerCallback);
-    xTimerStart(xTimers[0], 0);
+    // TaskHandle_t xHandle = NULL;
+    // xTimers[0] = xTimerCreate("bink led", pdMS_TO_TICKS(1000), pdTRUE, (void *)0, vTimerCallback);
+    // xTimerStart(xTimers[0], 0);
     xTaskCreate(spwm_task, "spwm_task", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
     // xTaskCreate(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
     // xTaskCreatePinnedToCore(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 2, &xHandle, TASK_PINNED_CORE_ID);
