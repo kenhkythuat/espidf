@@ -272,9 +272,8 @@ int ducy_cycle2[] = {0, 0, 0, 0, 0, 0,
                      21, 20, 19, 18, 17, 16, 16, 15, 14, 13, 13, 12, 11, 11, 10, 9, 9, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1
 
 };
-TimerHandle_t xTimers[0];
 
-void pwm_sin_50hz(void)
+static void pwm_sin_50hz(void)
 {
     ledc_timer_config_t ledc_timer_1 = {
         .duty_resolution = PWM_RESOLUTION,
@@ -367,11 +366,11 @@ static void status_led(void *arg)
 void app_main()
 {
     configure_led(BLINK_GPIO);
-    esim_config();
-    // TaskHandle_t xHandle = NULL;
-    // xTimers[0] = xTimerCreate("bink led", pdMS_TO_TICKS(1000), pdTRUE, (void *)0, vTimerCallback);
-    // xTimerStart(xTimers[0], 0);
-    // xTaskCreate(spwm_task, "spwm_task", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
-    // xTaskCreate(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
-    // xTaskCreatePinnedToCore(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 2, &xHandle, TASK_PINNED_CORE_ID);
+    // esim_config();
+    //  TaskHandle_t xHandle = NULL;
+    //  xTimers[0] = xTimerCreate("bink led", pdMS_TO_TICKS(1000), pdTRUE, (void *)0, vTimerCallback);
+    //  xTimerStart(xTimers[0], 0);
+    //  xTaskCreate(spwm_task, "spwm_task", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
+    //  xTaskCreate(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
+    //  xTaskCreatePinnedToCore(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 2, &xHandle, TASK_PINNED_CORE_ID);
 }

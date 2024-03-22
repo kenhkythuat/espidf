@@ -16,6 +16,34 @@
 #include "nvs_flash.h"
 
 #define TAG "----MQTT Esim----"
+#ifndef FARM
+#define FARM "gateway-agriconnect"
+#endif
+
+// Serial number. Must be lower case.
+#ifndef SERIAL_NUMBER
+#define SERIAL_NUMBER "sw000156"
+#endif
+#define MQTT_CLIENT_ID SERIAL_NUMBER
+#define MQTT_PORT 1883
+
+/** MQTT
+ * Global broker: mqtt.agriconnect.vn
+ */
+#define MQTT_HOST "tcp://mqtt.agriconnect.vn" // MQTT broker
+#define MQTT_USER "mqttnode"                  // User - connect to MQTT broker
+#define MQTT_PASS "congamo"
+char AT_RESET[] = "AT+CRESET\r\n";
+char AT_CHECK_A76XX[] = "AT\r\n";
+char AT_CHECK_ESIM[] = "AT+CGREG?\r\n";
+char AT_START_MQTT[] = "AT+CMQTTSTART\r\n";
+char AT_ACQUIRE_CLIENT[] = "AT+CMQTTACCQ=0,\"%s\",0\r\n";
+char AT_CONNECT_MQTT[] = "AT+CMQTTCONNECT=0,\"%s:%d\",60,1,\"%s\",\"%s\"\r\n";
+char AT_SET_PUBLISH_TOPIC[] = "AT+CMQTTTOPIC=0,%d\r\n";
+char AT_SET_PUBLISH_PAYLOAD[] = "AT+CMQTTPAYLOAD=0,%d\r\n";
+char AT_PUBLISH[] = "AT+CMQTTPUB=0,1,60\r\n"; // Password - connect to MQTT broker
+char AT_SUBCRIBE[] = "AT+CMQTTSUB=0\r\n";
+char AT_COMMAND[100];
 
 #define TXD_PIN (GPIO_NUM_1)
 #define RXD_PIN (GPIO_NUM_2)
@@ -60,9 +88,41 @@ static void tx_esim(void *arg)
     {
         // char tempData[10];
         // sprintf(tempData, "AT", temp);
-        sendData(TX_TASK_TAG, "ATE0");
-        // ESP_LOGI(TX_TASK_TAG, "\n-------------%s-----------------", pumpID);
+        sendData(TX_TASK_TAG, "AT\r\n");
         vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "ATE0\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "AT+CSQ\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "AT+CMQTTSTOP\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "AT+CMQTTSTART\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+        sprintf(AT_COMMAND, AT_ACQUIRE_CLIENT, MQTT_CLIENT_ID);
+        sendData(TX_TASK_TAG, AT_COMMAND);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+        sprintf(AT_COMMAND, AT_CONNECT_MQTT, MQTT_HOST, MQTT_PORT, MQTT_USER, MQTT_PASS);
+        sendData(TX_TASK_TAG, AT_COMMAND);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+        sprintf(AT_COMMAND, AT_ACQUIRE_CLIENT, MQTT_CLIENT_ID);
+        sendData(TX_TASK_TAG, AT_COMMAND);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+        sendData(TX_TASK_TAG, "AT+CMQTTSUBTOPIC=0,35,1\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "gateway-agriconnect/snac/sw000156/1\r\n");
+        sendData(AT_COMMAND, AT_SUBCRIBE);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "AT+CMQTTSUBTOPIC=0,35,1\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(TX_TASK_TAG, "gateway-agriconnect/snac/sw000156/2\r\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        sendData(AT_COMMAND, AT_SUBCRIBE);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        vTaskSuspend(NULL);
     }
     // free(rxdata);
 }
@@ -70,15 +130,33 @@ static void rx_esim(void *arg)
 {
     static const char *RX_ESIM_TAG = "RX_TASK_ESIM";
     esp_log_level_set(RX_ESIM_TAG, ESP_LOG_INFO);
-    uint8_t *data = (uint8_t *)malloc(RX_BUF_SIZE + 1);
+    char *data = (char *)malloc(RX_BUF_SIZE + 1);
     while (1)
     {
         const int rxBytes = uart_read_bytes(UART_NUM_1, data, RX_BUF_SIZE, 100 / portTICK_PERIOD_MS);
         // ESP_LOGI(RX_ESIM_TAG, "-----------------ham nhan data------------------");
         if (rxBytes > 0)
         {
+            char *first = NULL;
             data[rxBytes] = 0;
             ESP_LOGI(RX_ESIM_TAG, "\n-------------Read %d bytes: '%s'-------------------", rxBytes, data);
+            for (int i = 0; i < rxBytes; i++)
+            {
+                printf("data[%d]: %c\r\n", i, data[i]);
+            }
+            first = strstr(data, "gateway-agriconnect/snac/sw000156/1");
+            if (first != NULL)
+            {
+                if (data[109] == 48)
+                {
+                    printf("tat led\r\n");
+                }
+                if (data[109] == 49)
+                {
+                    printf("bat ked\r\n");
+                }
+                printf("Chuoi con la: %s\r\n", first);
+            }
         }
         // vTaskDelay(2 / portTICK_PERIOD_MS);
     }
@@ -97,6 +175,7 @@ void esim_config(void)
 {
     init_uart();
     configure_output(A7672_PWRKEY);
+    // configure_output(RELAY_1);
     open_simcom();
     xTaskCreate(rx_esim, "read_esim", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
     xTaskCreate(tx_esim, "write_esim", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
