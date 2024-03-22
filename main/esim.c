@@ -60,7 +60,7 @@ static void tx_esim(void *arg)
     {
         // char tempData[10];
         // sprintf(tempData, "AT", temp);
-        sendData(TX_TASK_TAG, "AT");
+        sendData(TX_TASK_TAG, "ATE0");
         // ESP_LOGI(TX_TASK_TAG, "\n-------------%s-----------------", pumpID);
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
