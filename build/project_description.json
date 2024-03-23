@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "mantis_solenoid_esim",
-    "project_version":    "da8a876-dirty",
+    "project_version":    "f7d7d8b-dirty",
     "project_path":       "C:/Espressif/frameworks/mantis_solenoid_esim",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.2.1",
     "build_dir":          "C:/Espressif/frameworks/mantis_solenoid_esim/build",
