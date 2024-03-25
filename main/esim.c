@@ -65,6 +65,7 @@ int sendData(const char *logName, const char *data)
 static void configure_output(int num_gpio)
 {
     gpio_reset_pin(num_gpio);
+    // gpio_reset_pin(num_gpio);
     // esp_rom_gpio_pad_select_gpio(num_gpio);
     // ESP_LOGI(TAG, "Example configured to blink GPIO LED!");
     gpio_set_direction(num_gpio, GPIO_MODE_INPUT_OUTPUT);
@@ -125,6 +126,7 @@ static void tx_esim(void *arg)
                 sendData(AT_COMMAND, AT_SUBCRIBE);
                 vTaskDelay(200 / portTICK_PERIOD_MS);
             }
+            vTaskDelay(200 / portTICK_PERIOD_MS);
             gpio_set_level(BLINK_LED, 1);
             isConnectedMQTT = true;
             vTaskSuspend(NULL);
@@ -172,6 +174,8 @@ static void rx_esim(void *arg)
                         ESP_LOGI(RX_ESIM_TAG, "\n-------------TRANG THAI LED %d -------------------", status);
                     }
                 }
+
+                // printf("data[%d]: %c\r\n", i, data[i]);
             }
             isQueueRx = false;
         }
@@ -208,6 +212,25 @@ static void update_status(void *arg)
             vTaskDelay(100 / portTICK_PERIOD_MS);
             sendData(UPLOAD_STATUS, AT_PUBLISH);
             vTaskDelay(100 / portTICK_PERIOD_MS);
+
+            // sprintf(AT_COMMAND, AT_SET_PUBLISH_TOPIC, strlen(MQTT_TOPIC_ACTUATOR_STATUS)); // Set the topic for publish message
+            // sendData(UPLOAD_STATUS, AT_COMMAND);
+            // vTaskDelay(200 / portTICK_PERIOD_MS);
+            // sprintf(AT_COMMAND, "%s\r\n", MQTT_TOPIC_ACTUATOR_STATUS);
+            // sendData(UPLOAD_STATUS, AT_COMMAND);
+            // vTaskDelay(200 / portTICK_PERIOD_MS);
+
+            // // sprintf(AT_COMMAND,STATUS_PAYLOAD_ARRAY_0_9,payLoadPin,payLoadStatus);
+            // int lengthOfInformPayload = strlen(STATUS_PAYLOAD_ARRAY_0_9);
+
+            // sprintf(AT_COMMAND, AT_SET_PUBLISH_PAYLOAD, lengthOfInformPayload);
+            // sendData(UPLOAD_STATUS, AT_COMMAND);
+            // vTaskDelay(200 / portTICK_PERIOD_MS);
+            // // sprintf(AT_COMMAND,AT_INFORM_PAYLOAD,payLoadPin,payLoadStatus);
+            // sendData(UPLOAD_STATUS, STATUS_PAYLOAD_ARRAY_0_9);
+            // vTaskDelay(200 / portTICK_PERIOD_MS);
+            // sendData(UPLOAD_STATUS, AT_PUBLISH);
+            // vTaskDelay(200 / portTICK_PERIOD_MS);
         }
         vTaskDelay(15000 / portTICK_PERIOD_MS);
     }
@@ -222,6 +245,7 @@ static void open_simcom(void)
     gpio_set_level(A7672_PWRKEY, 0);
 
     ESP_LOGI(TAG, "-----------------RESET SIM------------------");
+    sendData(TAG, "AT+CRESET\r\n");
 }
 void esim_config(void)
 {
@@ -232,7 +256,6 @@ void esim_config(void)
     configure_output(RELAY_3);
     configure_output(RELAY_4);
     configure_output(BLINK_LED);
-    gpio_set_level(BLINK_LED, 0);
     open_simcom();
 
     // xTaskCreatePinnedToCore(rx_esim, "rx_esim", 2048, NULL, configMAX_PRIORITIES - 2, NULL, 0);

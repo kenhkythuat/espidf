@@ -19,7 +19,11 @@
         "ledc.h": "c",
         "string.h": "c",
         "gpio.h": "c",
+<<<<<<< HEAD
         "nvs_flash.h": "c",
         "freertos.h": "c"
+=======
+        "nvs_flash.h": "c"
+>>>>>>> c750828ad8a7554c43a205062eb224b264283dd3
     }
 }
