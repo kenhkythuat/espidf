@@ -18,7 +18,7 @@
 #endif
 // Serial number. Must be lower case.
 #ifndef SERIAL_NUMBER
-#define SERIAL_NUMBER "sw000156"
+#define SERIAL_NUMBER "sw000173"
 #endif
 #define MQTT_CLIENT_ID SERIAL_NUMBER
 #define MQTT_PORT 1883
@@ -40,10 +40,10 @@
 #define TXD_PIN (GPIO_NUM_1)
 #define RXD_PIN (GPIO_NUM_2)
 #define A7672_PWRKEY (GPIO_NUM_42)
-#define RELAY_1 (GPIO_NUM_10)
-#define RELAY_2 (GPIO_NUM_9)
-#define RELAY_3 (GPIO_NUM_46)
-#define RELAY_4 (GPIO_NUM_3)
+#define RELAY_1 (GPIO_NUM_3)
+#define RELAY_2 (GPIO_NUM_46)
+#define RELAY_3 (GPIO_NUM_9)
+#define RELAY_4 (GPIO_NUM_10)
 #define BLINK_LED (GPIO_NUM_4)
 #define ON_OFF_24V (GPIO_NUM_13)
 

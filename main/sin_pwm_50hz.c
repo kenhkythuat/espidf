@@ -329,22 +329,12 @@ void spwm_task(void *arg)
             pwm_sin_50hz();
             // ESP_LOGI(TAG, "-----------------START PWM50HZ------------------");
         }
-        // pwm_sin_50hz();
-        // ESP_LOGI(TAG, "-----------------START PWM50HZ------------------");
     }
 }
 
 void config_pwm_50hz(void)
 {
     ESP_LOGI(TAG, "-----------------CREATE PWM 50Hz------------------");
-    // configure_led(BLINK_GPIO);
     TaskHandle_t xHandle = NULL;
-    //   xTimers[0] = xTimerCreate("bink led", pdMS_TO_TICKS(1000), pdTRUE, (void *)0, vTimerCallback);
-    //   xTimerStart(xTimers[0], 0);
-    // xTaskCreate(spwm_task, "spwm_task", 2048, NULL, configMAX_PRIORITIES - 1, NULL);
-    //   xTaskCreate(status_led, "status_led", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
     xTaskCreatePinnedToCore(spwm_task, "spwm_task", 4096, NULL, configMAX_PRIORITIES - 3, &xHandle, 1);
-    // xTaskCreate(rx_esim, "read_esim", 2048, NULL, configMAX_PRIORITIES - 2, NULL);
-    // xTaskCreate(tx_esim, "write_esim", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
-    // xTaskCreate(update_status, "update_status_load", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
 }
