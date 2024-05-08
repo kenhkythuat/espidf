@@ -1,0 +1,276 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0xb (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x178c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcbc
+load:0x403cc700,len:0x2da0
+entry 0x403c9914
+[0;32mI (27) boot: ESP-IDF HEAD-HASH-NOTFOUND 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Mar 25 2024 11:26:55[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v0.2[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (40) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (44) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (49) boot: Enabling RNG early entropy source...[0m
+[0;32mI (54) boot: Partition Table:[0m
+[0;32mI (58) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (73) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (80) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (88) boot: End of partition table[0m
+[0;32mI (92) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0e674h ( 58996) map[0m
+[0;32mI (111) esp_image: segment 1: paddr=0001e69c vaddr=3fc93000 size=0197ch (  6524) load[0m
+[0;32mI (113) esp_image: segment 2: paddr=00020020 vaddr=42000020 size=1fd6ch (130412) map[0m
+[0;32mI (141) esp_image: segment 3: paddr=0003fd94 vaddr=3fc9497c size=09100h ( 37120) load[0m
+[0;32mI (148) esp_image: segment 4: paddr=00048e9c vaddr=40374000 size=0ef7ch ( 61308) load[0m
+[0;32mI (170) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (170) boot: Disabling RNG early entropy source...[0m
+[0;32mI (181) cpu_start: Multicore app[0m
+[0;32mI (191) cpu_start: Pro cpu start user code[0m
+[0;32mI (191) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (191) cpu_start: Application information:[0m
+[0;32mI (194) cpu_start: Project name:     mantis_solenoid_esim[0m
+[0;32mI (200) cpu_start: App version:      7f0de06-dirty[0m
+[0;32mI (206) cpu_start: Compile time:     Mar 25 2024 11:41:33[0m
+[0;32mI (212) cpu_start: ELF file SHA256:  aee3e9e79...[0m
+[0;32mI (217) cpu_start: ESP-IDF:          HEAD-HASH-NOTFOUND[0m
+[0;32mI (223) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (228) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (233) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (237) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (245) heap_init: At 3FC9E408 len 0004B308 (300 KiB): RAM[0m
+[0;32mI (251) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (257) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (263) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (270) spi_flash: detected chip: gd[0m
+[0;32mI (274) spi_flash: flash io: dio[0m
+[0;32mI (278) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (284) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (292) main_task: Started on CPU0[0m
+[0;32mI (302) main_task: Calling app_main()[0m
+[0;32mI (302) ----MQTT Esim----: ----------------------Create UART -------------------------------- 
+[0m
+[0;32mI (312) gpio: GPIO[42]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (322) gpio: GPIO[9]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (332) gpio: GPIO[10]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (342) gpio: GPIO[11]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (342) gpio: GPIO[12]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (352) gpio: GPIO[4]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (362) ----MQTT Esim----: -----------------kich hoat module sim------------------[0m
+[0;32mI (372) ----MQTT Esim----: Wrote AT+CRESET
+ bytes[0m
+[0;32mI (1882) ----MQTT Esim----: -----------------RESET SIM------------------[0m
+[0;32mI (1882) ----MQTT Esim----: Wrote AT+CRESET
+ bytes[0m
+[0;32mI (10292) RX_TASK_ESIM: 
+-------------Read 31 bytes: '
++CPIN: READY
+
+*ATREADY: 1
+'-------------------[0m
+[0;32mI (11202) RX_TASK_ESIM: 
+-------------Read 12 bytes: '
+SMS DONE
+'-------------------[0m
+[0;32mI (12852) RX_TASK_ESIM: 
+-------------Read 24 bytes: '
++CGEV: EPS PDN ACT 1
+'-------------------[0m
+[0;32mI (20692) RX_TASK_ESIM: 
+-------------Read 11 bytes: '
+PB DONE
+'-------------------[0m
+[0;32mI (20692) ---WRITE ESIM---: Wrote AT
+ bytes[0m
+[0;32mI (20692) ----PWM_50Hz----: -----------------CREATE PWM 50Hz------------------[0m
+[0;32mI (20702) main_task: Returned from app_main()[0m
+[0;32mI (20842) RX_TASK_ESIM: 
+-------------Read 9 bytes: 'AT
+OK
+'-------------------[0m
+[0;32mI (20892) ---WRITE ESIM---: Wrote ATE0
+ bytes[0m
+[0;32mI (20992) RX_TASK_ESIM: 
+-------------Read 11 bytes: 'ATE0
+OK
+'-------------------[0m
+[0;32mI (21092) ---WRITE ESIM---: Wrote AT+CSQ
+ bytes[0m
+[0;32mI (21192) RX_TASK_ESIM: 
+-------------Read 21 bytes: '
++CSQ: 21,99
+
+OK
+'-------------------[0m
+[0;32mI (21292) ---WRITE ESIM---: Wrote AT+CMQTTSTOP
+ bytes[0m
+[0;32mI (21392) RX_TASK_ESIM: 
+-------------Read 9 bytes: '
+ERROR
+'-------------------[0m
+[0;32mI (21492) ---WRITE ESIM---: Wrote AT+CMQTTSTART
+ bytes[0m
+[0;32mI (21592) RX_TASK_ESIM: 
+-------------Read 24 bytes: '
+OK
+
++CMQTTSTART: 0
+'-------------------[0m
+[0;32mI (21692) ---WRITE ESIM---: Wrote AT+CMQTTACCQ=0,"sw000156",0
+ bytes[0m
+[0;32mI (21792) RX_TASK_ESIM: 
+-------------Read 6 bytes: '
+OK
+'-------------------[0m
+[0;32mI (21892) ---WRITE ESIM---: Wrote AT+CMQTTCONNECT=0,"tcp://mqtt.agriconnect.vn:1883",60,1,"mqttnode","congamo"
+ bytes[0m
+[0;32mI (22092) ---WRITE ESIM---: Wrote AT+CMQTTACCQ=0,"sw000156",0
+ bytes[0m
+[0;32mI (22192) RX_TASK_ESIM: 
+-------------Read 37 bytes: '
+OK
+
++CMQTTCONNECT: 0,0
+
+ERROR
+'-------------------[0m
+[0;32mI (22292) ---WRITE ESIM---: Wrote AT+CMQTTSUBTOPIC=0,35,1
+ bytes[0m
+[0;32mI (22392) RX_TASK_ESIM: 
+-------------Read 3 bytes: '
+>'-------------------[0m
+[0;32mI (22492) ---WRITE ESIM---: Wrote gateway-agriconnect/snac/sw000156/1
+ bytes[0m
+[0;32mI (22592) RX_TASK_ESIM: 
+-------------Read 6 bytes: '
+OK
+'-------------------[0m
+[0;32mI (22692) ---WRITE ESIM---: Wrote AT+CMQTTSUB=0
+ bytes[0m
+[0;32mI (22842) RX_TASK_ESIM: 
+-------------Read 24 bytes: '
+OK
+
++CMQTTSUB: 0,0
+'-------------------[0m
+[0;32mI (22892) ---WRITE ESIM---: Wrote AT+CMQTTSUBTOPIC=0,35,1
+ bytes[0m
+[0;32mI (22992) RX_TASK_ESIM: 
+-------------Read 3 bytes: '
+>'-------------------[0m
+[0;32mI (23092) ---WRITE ESIM---: Wrote gateway-agriconnect/snac/sw000156/2
+ bytes[0m
+[0;32mI (23192) RX_TASK_ESIM: 
+-------------Read 6 bytes: '
+OK
+'-------------------[0m
+[0;32mI (23292) ---WRITE ESIM---: Wrote AT+CMQTTSUB=0
+ bytes[0m
+[0;32mI (23442) RX_TASK_ESIM: 
+-------------Read 24 bytes: '
+OK
+
++CMQTTSUB: 0,0
+'-------------------[0m
+[0;32mI (23492) ---WRITE ESIM---: Wrote AT+CMQTTSUBTOPIC=0,35,1
+ bytes[0m
+[0;32mI (23592) RX_TASK_ESIM: 
+-------------Read 3 bytes: '
+>'-------------------[0m
+[0;32mI (23692) ---WRITE ESIM---: Wrote gateway-agriconnect/snac/sw000156/3
+ bytes[0m
+[0;32mI (23792) RX_TASK_ESIM: 
+-------------Read 6 bytes: '
+OK
+'-------------------[0m
+[0;32mI (23892) ---WRITE ESIM---: Wrote AT+CMQTTSUB=0
+ bytes[0m
+[0;32mI (24042) RX_TASK_ESIM: 
+-------------Read 24 bytes: '
+OK
+
++CMQTTSUB: 0,0
+'-------------------[0m
+[0;32mI (24092) ---WRITE ESIM---: Wrote AT+CMQTTSUBTOPIC=0,35,1
+ bytes[0m
+[0;32mI (24192) RX_TASK_ESIM: 
+-------------Read 3 bytes: '
+>'-------------------[0m
+[0;32mI (24292) ---WRITE ESIM---: Wrote gateway-agriconnect/snac/sw000156/4
+ bytes[0m
+[0;32mI (24392) RX_TASK_ESIM: 
+-------------Read 6 bytes: '
+OK
+'-------------------[0m
+[0;32mI (24492) ---WRITE ESIM---: Wrote AT+CMQTTSUB=0
+ bytes[0m
+[0;32mI (24642) RX_TASK_ESIM: 
+-------------Read 24 bytes: '
+OK
+
++CMQTTSUB: 0,0
+'-------------------[0m
+[0;32mI (40032) RX_TASK_ESIM: 
+-------------Read 124 bytes: '
++CMQTTRXSTART: 0,35,1
++CMQTTRXTOPIC: 0,35
+gateway-agriconnect/snac/sw000156/1
++CMQTTRXPAYLOAD: 0,1
+1
++CMQTTRXEND: 0
+'-------------------[0m
+-----------RELAY  1 DA tim thay-----------
+[0;32mI (40662) RX_TASK_ESIM: 
+-------------Read 124 bytes: '
++CMQTTRXSTART: 0,35,1
++CMQTTRXTOPIC: 0,35
+gateway-agriconnect/snac/sw000156/1
++CMQTTRXPAYLOAD: 0,1
+0
++CMQTTRXEND: 0
+'-------------------[0m
+-----------RELAY  1 DA tim thay-----------
+[0;32mI (41142) RX_TASK_ESIM: 
+-------------Read 124 bytes: '
++CMQTTRXSTART: 0,35,1
++CMQTTRXTOPIC: 0,35
+gateway-agriconnect/snac/sw000156/1
++CMQTTRXPAYLOAD: 0,1
+1
++CMQTTRXEND: 0
+'-------------------[0m
+-----------RELAY  1 DA tim thay-----------
+[0;32mI (41602) RX_TASK_ESIM: 
+-------------Read 124 bytes: '
++CMQTTRXSTART: 0,35,1
++CMQTTRXTOPIC: 0,35
+gateway-agriconnect/snac/sw000156/1
++CMQTTRXPAYLOAD: 0,1
+0
++CMQTTRXEND: 0
+'-------------------[0m
+-----------RELAY  1 DA tim thay-----------
+[0;32mI (111812) RX_TASK_ESIM: 
+-------------Read 124 bytes: '
++CMQTTRXSTART: 0,35,1
++CMQTTRXTOPIC: 0,35
+gateway-agriconnect/snac/sw000156/1
++CMQTTRXPAYLOAD: 0,1
+1
++CMQTTRXEND: 0
+'-------------------[0m
+-----------RELAY  1 DA tim thay-----------
+[0;32mI (114082) RX_TASK_ESIM: 
+-------------Read 124 bytes: '
++CMQTTRXSTART: 0,35,1
++CMQTTRXTOPIC: 0,35
+gateway-agriconnect/snac/sw000156/1
++CMQTTRXPAYLOAD: 0,1
+0
++CMQTTRXEND: 0
+'-------------------[0m
+-----------RELAY  1 DA tim thay-----------

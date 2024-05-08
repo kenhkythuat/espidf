@@ -55,13 +55,13 @@ void init_uart(void)
     uart_driver_install(UART_NUM_1, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
     uart_param_config(UART_NUM_1, &uart_config);
     uart_set_pin(UART_NUM_1, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
-    ESP_LOGI(TAG, "----------------------Create UART -------------------------------- \n");
+    ESP_LOGD(TAG, "----------------------Create UART -------------------------------- \n");
 }
 int sendData(const char *logName, const char *data)
 {
     const int len = strlen(data);
     const int txBytes = uart_write_bytes(UART_NUM_1, data, len);
-    ESP_LOGI(logName, "Wrote %s bytes", data);
+    ESP_LOGD(logName, "Wrote %s bytes", data);
     return txBytes;
 }
 static void configure_output(int num_gpio)
@@ -115,7 +115,7 @@ static void tx_esim(void *arg)
             isConnectedMQTT = true;
             // sendData(TX_TASK_TAG, AT_SLEEP_MODE2);
             vTaskSuspend(NULL);
-            ESP_LOGI(TAG, "-----------------CREATED ESIM------------------");
+            ESP_LOGD(TAG, "-----------------CREATED ESIM------------------");
         }
     }
 }
@@ -131,7 +131,7 @@ static void rx_esim(void *arg)
         {
             // isQueueRx = true;
             data[rxBytes] = 0;
-            ESP_LOGI(RX_ESIM_TAG, "\n-------------Read %d bytes: '%s'-------------------", rxBytes, data);
+            ESP_LOGD(RX_ESIM_TAG, "\n-------------Read %d bytes: '%s'-------------------", rxBytes, data);
             if (strstr(data, "PB DONE"))
             {
                 isPBDONE = true;
@@ -157,26 +157,26 @@ static void rx_esim(void *arg)
                         printf("-----------ON RELAY %d-----------\r\n", data[i + 4] - 48);
                         gpio_set_level(GPIO_LOAD_PIN[num_load - 1], 1);
                         status = gpio_get_level(GPIO_LOAD_PIN[num_load - 1]);
-                        ESP_LOGI(RX_ESIM_TAG, "\n-------------TRANG THAI LED %d -------------------", status);
+                        ESP_LOGD(RX_ESIM_TAG, "\n-------------TRANG THAI LED %d -------------------", status);
                         onReay++;
                         if (onReay >= NUMBER_LOADS)
                         {
                             onReay = NUMBER_LOADS;
                         }
-                        ESP_LOGI(RX_ESIM_TAG, "\n-------------Number load ON %d -------------------", onReay);
+                        ESP_LOGD(RX_ESIM_TAG, "\n-------------Number load ON %d -------------------", onReay);
                     }
                     else if (data[i + 29] == 48 && isPBDONE == true)
                     {
                         printf("-----------OFF RELAY %d-----------\r\n", data[i + 4] - 48);
                         gpio_set_level(GPIO_LOAD_PIN[num_load - 1], 0);
                         status = gpio_get_level(GPIO_LOAD_PIN[num_load - 1]);
-                        ESP_LOGI(RX_ESIM_TAG, "\n-------------TRANG THAI LED %d -------------------", status);
+                        ESP_LOGD(RX_ESIM_TAG, "\n-------------TRANG THAI LED %d -------------------", status);
                         onReay--;
                         if (onReay < 1)
                         {
                             onReay = 0;
                         }
-                        ESP_LOGI(RX_ESIM_TAG, "\n-------------Number load OFF %d -------------------", onReay);
+                        ESP_LOGD(RX_ESIM_TAG, "\n-------------Number load OFF %d -------------------", onReay);
                     }
                 }
 
@@ -225,7 +225,7 @@ static void update_status(void *arg)
 }
 static void open_simcom(void)
 {
-    ESP_LOGI(TAG, "-----------------Activated Module Sim------------------");
+    ESP_LOGD(TAG, "-----------------Activated Module Sim------------------");
     gpio_set_level(A7672_PWRKEY, 1);
     vTaskDelay(pdMS_TO_TICKS(3200));
     gpio_set_level(A7672_PWRKEY, 0);
@@ -233,7 +233,7 @@ static void open_simcom(void)
     gpio_set_level(A7672_PWRKEY, 1);
     vTaskDelay(pdMS_TO_TICKS(1000));
     gpio_set_level(A7672_PWRKEY, 0);
-    ESP_LOGI(TAG, "-----------------Running Module Sim ------------------");
+    ESP_LOGD(TAG, "-----------------Running Module Sim ------------------");
 }
 void esim_config(void)
 {
@@ -244,7 +244,7 @@ void esim_config(void)
     configure_output(RELAY_3);
     configure_output(RELAY_4);
     configure_output(BLINK_LED);
-    ESP_LOGI(TAG, "-----------------Esim config------------------");
+    ESP_LOGD(TAG, "-----------------Esim config------------------");
     open_simcom();
     xTaskCreate(rx_esim, "read_esim", 2048, NULL, configMAX_PRIORITIES - 3, NULL);
     xTaskCreatePinnedToCore(tx_esim, "write_esim", 2048, NULL, configMAX_PRIORITIES - 1, NULL, 0);

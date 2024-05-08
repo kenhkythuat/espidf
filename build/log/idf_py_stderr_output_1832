@@ -1,0 +1,17 @@
+[0;33m--- WARNING: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM9 instead...[0m
+[0;33m--- esp-idf-monitor 1.4.0 on \\.\COM9 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x420116cc: _svfprintf_r at /builds/idf/crosstool-NG/.build/HOST-x86_64-w64-mingw32/xtensa-esp-elf/src/newlib/newlib/libc/stdio/svfprintf.c:911
+[0m
+[0;33m0x400556d5: strlen in ROM
+0x400556e5: strlen in ROM
+[0m
+[0;33m0x420116c9: _svfprintf_r at /builds/idf/crosstool-NG/.build/HOST-x86_64-w64-mingw32/xtensa-esp-elf/src/newlib/newlib/libc/stdio/svfprintf.c:911
+0x42010b25: sprintf at /builds/idf/crosstool-NG/.build/HOST-x86_64-w64-mingw32/xtensa-esp-elf/src/newlib/newlib/libc/stdio/sprintf.c:618 (discriminator 1)
+0x42008889: tx_esim at C:/Espressif/frameworks/mantis_solenoid_esim/main/esim.c:112
+0x4037b3cd: vPortTaskWrapper at C:/Espressif/frameworks/esp-idf-v5.2.1/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x40375940: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/port/soc/esp32s3/system_internal.c:159
+[0m
+[0m
