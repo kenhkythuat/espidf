@@ -14,11 +14,11 @@
 #include "cJSON.h"
 
 #ifndef FARM
-#define FARM "gateway-agriconnect"
+#define FARM "hoithao"
 #endif
 // Serial number. Must be lower case.
 #ifndef SERIAL_NUMBER
-#define SERIAL_NUMBER "sw000173"
+#define SERIAL_NUMBER "sw000180"
 #endif
 #define MQTT_CLIENT_ID SERIAL_NUMBER
 #define MQTT_PORT 1883
@@ -49,8 +49,5 @@
 
 void esim_config(void);
 void config_pwm_50hz(void);
-// static void update_status(void *arg);
-// static void rx_esim(void *arg);
-// static void tx_esim(void *arg)
 
 #endif
