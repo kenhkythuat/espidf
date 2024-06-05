@@ -14,11 +14,11 @@
 #include "cJSON.h"
 
 #ifndef FARM
-#define FARM "hoithao"
+#define FARM "gateway-agriconnect"
 #endif
 // Serial number. Must be lower case.
 #ifndef SERIAL_NUMBER
-#define SERIAL_NUMBER "sw000180"
+#define SERIAL_NUMBER "sw000156"
 #endif
 #define MQTT_CLIENT_ID SERIAL_NUMBER
 #define MQTT_PORT 1883
@@ -28,6 +28,10 @@
 #define MQTT_HOST "tcp://mqtt.agriconnect.vn" // MQTT broker
 #define MQTT_USER "mqttnode"                  // User - connect to MQTT broker
 #define MQTT_PASS "congamo"
+
+// demox sử dụng để test
+// #define MQTT_USER "node" // User - connect to MQTT broker
+// #define MQTT_PASS "654321"
 
 #define MQTT_TOPIC_ACTUATOR_STATUS FARM "/sn/" SERIAL_NUMBER "/as/"
 // MQTT topic to subscribe and get command to switch on/off actuator
