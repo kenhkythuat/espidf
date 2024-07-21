@@ -18,7 +18,7 @@
 #endif
 // Serial number. Must be lower case.
 #ifndef SERIAL_NUMBER
-#define SERIAL_NUMBER "sw000156"
+#define SERIAL_NUMBER "sw000189"
 #endif
 #define MQTT_CLIENT_ID SERIAL_NUMBER
 #define MQTT_PORT 1883
@@ -51,7 +51,15 @@
 #define BLINK_LED (GPIO_NUM_4)
 #define ON_OFF_24V (GPIO_NUM_13)
 
+extern char data[1024];
+extern char AT_COMMAND[100];
+
 void esim_config(void);
 void config_pwm_50hz(void);
+int check_esim();
+int sendData(const char *logName, const char *data);
+int enable_mqtt_on_gsm_modem();
+int connect_mqtt_server_by_gsm();
+int subscribe_mqtt_via_gsm();
 
 #endif

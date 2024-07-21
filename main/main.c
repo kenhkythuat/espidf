@@ -12,7 +12,7 @@
 #include "esp_task_wdt.h"
 #include <common.h>
 #define TAG "----MIAN----"
-
+int check_esim();
 void app_main()
 {
     esim_config();

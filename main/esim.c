@@ -13,6 +13,13 @@
 #include "math.h"
 #include "nvs_flash.h"
 #define TAG "----MQTT Esim----"
+int statusOfLoad;
+bool isConnectedMQTT = false;
+bool isQueueRx = false;
+unsigned int GPIO_LOAD_PIN[10] = {RELAY_1, RELAY_2, RELAY_3, RELAY_4};
+int onReay = 0;
+int SERIAL;
+int step_mqtt_start = false;
 char AT_RESET[] = "AT+CRESET\r\n";
 char AT_CHECK_A76XX[] = "AT\r\n";
 char AT_CHECK_ESIM[] = "AT+CGREG?\r\n";
@@ -28,19 +35,18 @@ char AT_SLEEP_MODE2[] = "AT+CSCLK=2\r\n";
 char AT_SUBCRIBE_TOPIC[] = "%s%d\r\n";
 char AT_COMMAND[100];
 char AT_INFORM_PAYLOAD[] = "{%d:%d}\r\n";
-char AT_COMMAND[100];
 char STATUS_PAYLOAD_ARRAY_0_9[LENGTH_STATUS_PAYLOAD_0_9];
 char STATUS_PAYLOAD_ARRAY_10_18[LENGTH_STATUS_PAYLOAD_10_18];
 char STATUS_PAYLOAD_ARRAY_TOTAL[] = "{\"1\":0,\"2\":0,\"3\":0,\"4\":0,\"5\":0,\"6\":0,\"7\":0,\"8\":0,\"9\":0,\"10\":0,\"11\":0,\"12\":0,\"13\":0,\"14\":0,\"15\":0,\"16\":0,\"17\":0,\"18\":0}";
-int statusOfLoad;
-bool isConnectedMQTT = false;
-bool isQueueRx = false;
-unsigned int GPIO_LOAD_PIN[10] = {RELAY_1, RELAY_2, RELAY_3, RELAY_4};
-int onReay = 0;
-int SERIAL;
 
 static const int RX_BUF_SIZE = 1024;
 bool isPBDONE = false;
+char data[1024];
+int isEnable_MQTT;
+int isConnect_MQTT;
+int isCheckSim;
+int isSubcribe_MQTT;
+int isPublish_MQTT;
 void init_uart(void)
 {
     const uart_config_t uart_config = {
@@ -60,7 +66,7 @@ int sendData(const char *logName, const char *data)
 {
     const int len = strlen(data);
     const int txBytes = uart_write_bytes(UART_NUM_1, data, len);
-    ESP_LOGI(logName, "Wrote %s bytes", data);
+    ESP_LOGI(logName, "Wrote %s", data);
     return txBytes;
 }
 static void configure_output(int num_gpio)
@@ -78,36 +84,28 @@ static void tx_esim(void *arg)
     {
         if (isPBDONE == true)
         {
-            sendData(TX_TASK_TAG, AT_CHECK_A76XX);
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-            sendData(TX_TASK_TAG, "ATE0\r\n");
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-            sendData(TX_TASK_TAG, "AT+CSQ\r\n");
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-            // sendData(TX_TASK_TAG, "AT+CMQTTSTOP\r\n");
-            // vTaskDelay(200 / portTICK_PERIOD_MS);
-            sendData(TX_TASK_TAG, AT_START_MQTT);
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-
+            isCheckSim = check_esim();
+            vTaskDelay(400 / portTICK_PERIOD_MS);
+            sendData(TX_TASK_TAG, "AT+CMQTTCONNECT?\r\n");
+            vTaskDelay(400 / portTICK_PERIOD_MS);
+            if (isCheckSim)
+            {
+                isEnable_MQTT = enable_mqtt_on_gsm_modem();
+            }
             sprintf(AT_COMMAND, AT_ACQUIRE_CLIENT, MQTT_CLIENT_ID);
             sendData(TX_TASK_TAG, AT_COMMAND);
             vTaskDelay(200 / portTICK_PERIOD_MS);
-
-            sprintf(AT_COMMAND, AT_CONNECT_MQTT, MQTT_HOST, MQTT_PORT, MQTT_USER, MQTT_PASS);
-            sendData(TX_TASK_TAG, AT_COMMAND);
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-            for (int i = 1; i < NUMBER_LOADS + 1; i++)
+            if (isEnable_MQTT)
             {
-                sprintf(AT_COMMAND, AT_SUBCRIBE_TOPIC, MQTT_TOPIC_ACTUATOR_CONTROL, i);
-                sprintf(AT_COMMAND, AT_SET_SUBCRIBE_TOPIC, (int)strlen(AT_COMMAND) - 2);
-                sendData(TX_TASK_TAG, AT_COMMAND);
-                vTaskDelay(200 / portTICK_PERIOD_MS);
-                sprintf(AT_COMMAND, AT_SUBCRIBE_TOPIC, MQTT_TOPIC_ACTUATOR_CONTROL, i);
-                sendData(TX_TASK_TAG, AT_COMMAND);
-                vTaskDelay(200 / portTICK_PERIOD_MS);
-                sendData(TX_TASK_TAG, AT_SUBCRIBE);
-                vTaskDelay(200 / portTICK_PERIOD_MS);
+                isConnect_MQTT = connect_mqtt_server_by_gsm();
+            }
+            vTaskDelay(200 / portTICK_PERIOD_MS);
+            sendData(TX_TASK_TAG, "AT+CMQTTCONNECT?\r\n");
+            vTaskDelay(400 / portTICK_PERIOD_MS);
+            if (isConnect_MQTT)
+            {
+                // isSubcribe_MQTT = subscribe_mqtt_via_gsm();
+                isSubcribe_MQTT = subscribe_mqtt_via_gsm();
             }
             vTaskDelay(200 / portTICK_PERIOD_MS);
             gpio_set_level(BLINK_LED, 1);
@@ -122,7 +120,7 @@ static void rx_esim(void *arg)
 {
     static const char *RX_ESIM_TAG = "RX_TASK_ESIM";
     esp_log_level_set(RX_ESIM_TAG, ESP_LOG_INFO);
-    char *data = (char *)malloc(RX_BUF_SIZE + 1);
+    // char *data = (char *)malloc(RX_BUF_SIZE + 1);
     while (1)
     {
         const int rxBytes = uart_read_bytes(UART_NUM_1, data, RX_BUF_SIZE, 100 / portTICK_PERIOD_MS);
@@ -130,17 +128,19 @@ static void rx_esim(void *arg)
         {
             // isQueueRx = true;
             data[rxBytes] = 0;
-            ESP_LOGI(RX_ESIM_TAG, "\n-------------Read %d bytes: '%s'-------------------", rxBytes, data);
+            ESP_LOGI(RX_ESIM_TAG, "\n------------- Responded------------ %s", data);
             if (strstr(data, "PB DONE"))
             {
-                isPBDONE = true;
                 printf("-----------PB DONE-----------\r\n");
-            }
-            if (strstr(data, "EPS PDN ACT 1"))
-            {
                 isPBDONE = true;
-                printf("-----------PB DONE-----------\r\n");
             }
+            // if (strstr(data, "PDN ACT 1"))
+            // {
+
+            //     printf("-----------PDN ACT 1-----------\r\n");
+            //     vTaskDelay(3000 / portTICK_PERIOD_MS);
+            //     isPBDONE = true;
+            // }
             if (strstr(data, "ERROR"))
             {
                 printf("-----------ERROR-----------\r\n");
@@ -183,14 +183,13 @@ static void rx_esim(void *arg)
                         ESP_LOGI(RX_ESIM_TAG, "\n-------------Number load OFF %d -------------------", onReay);
                     }
                 }
-
                 // printf("data[%d]: %c\r\n", i, data[i]);
             }
             isQueueRx = false;
         }
         vTaskDelay(50 / portTICK_PERIOD_MS);
     }
-    free(data);
+    // free(data);
 }
 static void update_status(void *arg)
 {
@@ -210,18 +209,22 @@ static void update_status(void *arg)
             }
             sprintf(AT_COMMAND, AT_SET_PUBLISH_TOPIC, strlen(MQTT_TOPIC_ACTUATOR_STATUS));
             sendData(UPLOAD_STATUS, AT_COMMAND);
-            vTaskDelay(100 / portTICK_PERIOD_MS);
+            vTaskDelay(300 / portTICK_PERIOD_MS);
             sprintf(AT_COMMAND, "%s\r\n", MQTT_TOPIC_ACTUATOR_STATUS);
             sendData(UPLOAD_STATUS, AT_COMMAND);
-            vTaskDelay(100 / portTICK_PERIOD_MS);
+            vTaskDelay(300 / portTICK_PERIOD_MS);
             int lengthOfInformPayload = strlen(STATUS_PAYLOAD_ARRAY_0_9);
             sprintf(AT_COMMAND, AT_SET_PUBLISH_PAYLOAD, lengthOfInformPayload);
             sendData(UPLOAD_STATUS, AT_COMMAND);
-            vTaskDelay(100 / portTICK_PERIOD_MS);
+            vTaskDelay(300 / portTICK_PERIOD_MS);
             sendData(UPLOAD_STATUS, STATUS_PAYLOAD_ARRAY_0_9);
-            vTaskDelay(100 / portTICK_PERIOD_MS);
+            vTaskDelay(300 / portTICK_PERIOD_MS);
             sendData(UPLOAD_STATUS, AT_PUBLISH);
-            vTaskDelay(100 / portTICK_PERIOD_MS);
+            vTaskDelay(300 / portTICK_PERIOD_MS);
+            if (strstr(data, "+CMQTTPUB: 0,0") != NULL)
+            {
+                ESP_LOGI(TAG, "-----------------Publish Successed !------------------\n");
+            }
             // sendData(UPLOAD_STATUS, AT_SLEEP_MODE2);
         }
         vTaskDelay(10000 / portTICK_PERIOD_MS);
